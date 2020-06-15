@@ -12,4 +12,4 @@
 
 ```yarn run start```
 
-
+## ```command + shift + B```でブックマークバーの表示と非表示

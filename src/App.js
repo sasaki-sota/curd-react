@@ -8,7 +8,12 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          これでニキビのアプリを作ります。<br/>
+          妥協せずちゃんと作ります。<br/>
+          末長く見守ってやってください<br/>
+          大変恐縮ですが何卒よろしくお願いします <br/>
+
+          <br/>
         </p>
         <a
           className="App-link"
@@ -16,7 +21,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          作成者　佐々木颯汰
         </a>
       </header>
     </div>
