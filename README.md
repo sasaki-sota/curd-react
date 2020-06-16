@@ -1,4 +1,4 @@
-# reactアプリケーションの作成
+https://anotherworks.slack.com/archives/GTHMG3WJK# reactアプリケーションの作成
 
 ## 一つのファイルのみを前の状態に戻す
 
@@ -19,8 +19,8 @@
 
 ## JSXについて
 returnで返す時は一つのタグでなければならない
-**原則JSの処理をする時は{}が必要**
-  <React.Fragment> = divの代わりであり、一つにくくることができるようになる
+**原則JSの処理をする時は{}が必要**  
+<React.Fragment> = divの代わりであり、一つにくくることができるようになる
 
 ### タグ内でのクラスの定義
 `<div class = 'hoge'>` => `<div className = 'hoge'>`
@@ -45,14 +45,14 @@ returnで返す時は一つのタグでなければならない
 
 
 ## propsについて
-propsとは？　**コンポーネントの属性のこと**
-  props.nameあるデーターの属性に対して参照できるもの
-  基本的には{}で囲って使用する
+propsとは？　**コンポーネントの属性のこと**  
+props.nameあるデーターの属性に対して参照できるもの  
+基本的には{}で囲って使用する  
   例：```<User name = {"Taro"}/>```
 これでユーザーコンポーネントにnameという属性を与えることができるようになる
-```const User = (props) => {```
-    ```return <div>Hi, I am {props.name}. Age is {props.age} </div>```
-```}```
+```const User = (props) => {```  
+    ```return <div>Hi, I am {props.name}. Age is {props.age} </div>```  
+```}```  
 このように記述すればこの場合のnameはTaroを参照することができるようになる
 
 
@@ -61,7 +61,7 @@ propsとは？　**コンポーネントの属性のこと**
 ###  Warning: Each child in list in should have a unique "key" props ~のエラーの対処法
 A. indexを引数に設定する
 ***
-```profiles.map((profile, index) => {```
-                   ``` return <User name = {profile.name} age = {profile.age} key={index} />```
+```profiles.map((profile, index) => {```  
+                   ``` return <User name = {profile.name} age = {profile.age} key={index} />```  
                ``` })```
 
