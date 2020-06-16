@@ -49,13 +49,26 @@ propsとは？　**コンポーネントの属性のこと**
 props.nameあるデーターの属性に対して参照できるもの  
 基本的には{}で囲って使用する  
   例：```<User name = {"Taro"}/>```
-これでユーザーコンポーネントにnameという属性を与えることができるようになる
+これでユーザーコンポーネントにnameという属性を与えることができるようになる  
 ```const User = (props) => {```  
     ```return <div>Hi, I am {props.name}. Age is {props.age} </div>```  
 ```}```  
 このように記述すればこの場合のnameはTaroを参照することができるようになる
 
+## defaultPropsについて
+`User.defaultProps = {`  
+`name: "hoge"`  
+`}`  
+もしpropsを使用する時にnameを入力しなかったらデフォルトのhogeになる
 
+## prop-typesについて
+prop-typesとは？　**プロパティに対する型チェックを行うパッケージ**  
+使用する時は`import PropTypes from 'prop-types';`の記述が必要  
+`User.propTypes = {`  
+`    name: PropTypes.string`  
+`}`  
+これで型チェックができるようになり。渡した時に他の方だった場合、**warningが発生する**  
+`age: PropTypes.number.isRequired`これを記述すると必ずageを記述する必要がある  
 
 ## その他の概念や対応について
 ###  Warning: Each child in list in should have a unique "key" props ~のエラーの対処法
@@ -64,4 +77,5 @@ A. indexを引数に設定する
 ```profiles.map((profile, index) => {```  
                    ``` return <User name = {profile.name} age = {profile.age} key={index} />```  
                ``` })```
+
 
