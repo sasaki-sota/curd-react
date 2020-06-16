@@ -23,7 +23,11 @@ https://anotherworks.slack.com/archives/GTHMG3WJK# reactアプリケーション
 ## JSXについて
 returnで返す時は一つのタグでなければならない(原則としてReact>Fragmentを使用する)  
 **原則JSの処理をする時は{}が必要**  
-<React.Fragment> = divの代わりであり、一つにくくることができるようになる
+<React.Fragment> = divの代わりであり、一つにくくることができるようになる  
+###他のファイルで機能を使用する時
+`export`を先頭に記述しておき使用するファイルで`import`する  
+例：
+`import {INCREMENT, DECREMENT}  from "../actions";`
 
 ### タグ内でのクラスの定義
 `<div class = 'hoge'>` => `<div className = 'hoge'>`
@@ -117,6 +121,13 @@ actionとは？ **javascriptのオブジェクトのこと**
     `// DECREMENTのアクション`  
    ` type: 'DECREMENT'`  
 `})`  
-このように記述することができる
+このように記述することができる  
+アクションのタイプ　＝ action.type  
 
+## redux reducerについて
+reducerとは？　**アクションが発生した時に組み込まれているtypeに応じて状態をどのように変更させるか**  
+ここでの状態はstateで扱う  
+#### reducers/index.js
+**アプリケーション内のreducer全てを統括するファイル**  
+`import { combineReducers } from "redux";` => reducerを結合する関数  
 
