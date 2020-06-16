@@ -1,6 +1,7 @@
 // JSXの時は必ずreactを書く
 import React, { Component } from "react";
 
+// クラスコンポーネント
 class App extends Component {
   render() {
     return (
@@ -11,5 +12,10 @@ class App extends Component {
     )
   }
 }
+
+// 関数コンポーネント
+// const App = () => {
+//     return <div>Hi</div>
+// }
 
 export  default App;
