@@ -163,3 +163,13 @@ storeとは？ **全てのコンポーネントでreducerを使用できるよ�
 `      </Provider>`  
 このような記述を**src/index.js**に記述  
 
+## redux Connect関数について
+conectとは？ **ステートやアクションとコンポーネントと関連づけを行って、viewのイベントで状態を遷移させて、遷移後の状態を描画する**  
+`import { connect } from 'react-redux'`をインポートする  
+expoerで結びつける部分: `export default connect(mapStateToProps, mapDispatchToProps)(App)`  
+####  mapStateToProps = stateの情報からこのコンポーネントに必要な情報を呼び出して、コンポーネントないのpropsとしてマッピングする性質のあるもの  
+`const mapStateToProps = state => {{ value: state.count.value }}`と記述  
+引数にはstateを書いてどういったオブジェクトをpropsとして対応するか返り値として定義する  
+  
+## dispatchについて
+

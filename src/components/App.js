@@ -1,35 +1,28 @@
 // JSXの時は必ずreactを書く
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 
-// counterコンポーネントを呼ぶ定数
-const App = () => (<Counter></Counter>)
+import {increment, decrement} from "../actions";
 
-class Counter extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = { count: 0 }
-    }
-
-    handlePlusButton = () => {
-        // 現在のカウントに1を足す
-        this.setState({count: this.state.count + 1})
-    }
-
-    handleDeleteButton = () => {
-        this.setState({count: this.state.count - 1})
-    }
-
+class App extends Component {
     render() {
+        const props = this.props
+
         return (
             <React.Fragment>
-                <div>count: {this.state.count }</div>
-                クリックされた時定義されたハンドルクラスボタン関数が作動する
-                <button onClick={this.handlePlusButton}>+1</button>
-                <button onClick={this.handleDeleteButton}>-1</button>
+                <div>value: {props.value }</div>
+                <button onClick={props.increment}>+1</button>
+                <button onClick={props.decrement}>-1</button>
             </React.Fragment>
         )
     }
 }
 
-export  default App;
+const mapStateToProps = state => ({ value: state.count.value })
+const mapDispatchToProps = dispatch => ({
+    increment: () => dispatch(increment()),
+    decrement: () => dispatch(decrement())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
