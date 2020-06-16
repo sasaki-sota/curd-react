@@ -22,13 +22,6 @@ returnで返す時は一つのタグでなければならない
 **原則JSの処理をする時は{}が必要**
 <React.Fragment> = divの代わりであり、一つにくくることができるようになる
 
-### 例：定数を定数の中で使う場合
-```const greeting = 'Hi';
-    const dom = <h1>{greeting}</h1>;
-    return dom ```
-と{}（ハッシュ）をつける必要がある
-**これがないとJSとしての記述を利用することができない**
-
 ### タグ内でのクラスの定義
 `<div class = 'hoge'>` => `<div className = 'hoge'>`
 
