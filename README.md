@@ -14,6 +14,9 @@ https://anotherworks.slack.com/archives/GTHMG3WJK# reactアプリケーション
 
 ## ```command + shift + B```でブックマークバーの表示と非表示
 
+## reduxの追加
+
+```yarn add redux react-redux```
 
 # 注意点のまとめ
 
@@ -104,5 +107,16 @@ A. indexを引数に設定する
 ```profiles.map((profile, index) => {```  
                    ``` return <User name = {profile.name} age = {profile.age} key={index} />```  
                ``` })```
+
+## redux Actionについて
+actionとは？ **javascriptのオブジェクトのこと**  
+そのオブジェクトの中でtypeのキーとそのtypeに対応する値を持つのが特徴であり、ユニークなものである  
+### アクションを返す関数　＝　actionCreatorという
+例：  
+`export const decrement = () => ({`  
+    `// DECREMENTのアクション`  
+   ` type: 'DECREMENT'`  
+`})`  
+このように記述することができる
 
 
