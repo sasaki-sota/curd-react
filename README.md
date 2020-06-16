@@ -130,4 +130,15 @@ reducerとは？　**アクションが発生した時に組み込まれてい�
 #### reducers/index.js
 **アプリケーション内のreducer全てを統括するファイル**  
 `import { combineReducers } from "redux";` => reducerを結合する関数  
-
+例：
+`export default (state = initialState, action) => {`  
+`    switch (action.type) {`  
+`        case INCREMENT:`  
+`            return { value: state.value + 1}`  
+`        case DECREMENT:`  
+`            return { value: state.value - 1}`  
+`            default:`  
+`            return state`
+`}`  
+`}`  
+などと記述する
