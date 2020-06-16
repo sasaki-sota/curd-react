@@ -172,4 +172,5 @@ expoerで結びつける部分: `export default connect(mapStateToProps, mapDisp
 引数にはstateを書いてどういったオブジェクトをpropsとして対応するか返り値として定義する  
   
 ## dispatchについて
-
+**発行という意味**
+> 作成(create)-初期化(init)-発行(dispatch)プロセスの最後のステップ
