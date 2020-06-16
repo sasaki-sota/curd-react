@@ -18,6 +18,10 @@ https://anotherworks.slack.com/archives/GTHMG3WJK# reactアプリケーション
 
 ```yarn add redux react-redux```
 
+## ファイルの移動
+
+` git mv src/App.js src/components/`
+
 # 注意点のまとめ
 
 ## JSXについて
@@ -142,3 +146,11 @@ reducerとは？　**アクションが発生した時に組み込まれてい�
 `}`  
 `}`  
 などと記述する
+
+## redux storeについて
+storeとは？ **全てのコンポーネントでreducerを使用できるようにするもの**  
+`import { createStore} from "redux";`をimportする必要がある  
+`const store = createStore(reducer)`  
+ここで作られるストアはアプリケーション内で唯一のものになり,  
+アプリケーション内の全てのステートはこのストアに集約されている  
+ここで作られたストアは全てのコンポーネントで参照できる
