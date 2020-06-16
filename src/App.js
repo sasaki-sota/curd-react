@@ -1,21 +1,33 @@
 // JSXの時は必ずreactを書く
 import React, { Component } from "react";
 
-// クラスコンポーネント
-class App extends Component {
-  render() {
+const App = () => {
+    // 配列で囲うことによって複数管理できるようになる
+    const profiles = [
+        { name: "Taro", age: 10 },
+        { name: "Hanako", age: 40 },
+        { name: "Souta" }
+    ]
     return (
-        <React.Fragment>
-          <label htmlFor="bar">bar</label>
-          <input type="text" onClick={() => {console.log('I am clicked')}} />
-        </React.Fragment>
+        <div>
+            {
+                // mapメソッドを使って配列を順番に取り出す
+                // ruby => profiles.map do |profile|
+                profiles.map((profile, index) => {
+                    return <User name = {profile.name} age = {profile.age} key={index} />
+                })
+            }
+        </div>
     )
-  }
 }
 
-// 関数コンポーネント
-// const App = () => {
-//     return <div>Hi</div>
-// }
+const User = (props) => {
+    return <div>Hi, I am {props.name}. Age is {props.age} </div>
+}
+
+// defaultPropsを設定しておけば情報が入力されていない時に代わりのデーターを入れる
+User.defaultProps = {
+    age: 1
+}
 
 export  default App;

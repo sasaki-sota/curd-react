@@ -42,3 +42,26 @@ returnで返す時は一つのタグでなければならない
 
 ### 関数コンポーネント
 ``` const App = () => { ~処理 }```
+
+
+## propsについて
+propsとは？　**コンポーネントの属性のこと**
+props.nameあるデーターの属性に対して参照できるもの
+基本的には{}で囲って使用する
+例：```<User name = {"Taro"}/>```
+これでユーザーコンポーネントにnameという属性を与えることができるようになる
+```const User = (props) => {
+    return <div>Hi, I am {props.name}. Age is {props.age} </div>
+}```
+このように記述すればこの場合のnameはTaroを参照することができるようになる
+
+
+
+## その他の概念や対応について
+###  Warning: Each child in list in should have a unique "key" props ~のエラーの対処法
+A. indexを引数に設定する
+***
+```profiles.map((profile, index) => {
+                    return <User name = {profile.name} age = {profile.age} key={index} />
+                })```
+
