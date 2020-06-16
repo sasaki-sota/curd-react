@@ -18,7 +18,7 @@ https://anotherworks.slack.com/archives/GTHMG3WJK# reactアプリケーション
 # 注意点のまとめ
 
 ## JSXについて
-returnで返す時は一つのタグでなければならない
+returnで返す時は一つのタグでなければならない(原則としてReact>Fragmentを使用する)  
 **原則JSの処理をする時は{}が必要**  
 <React.Fragment> = divの代わりであり、一つにくくることができるようになる
 
@@ -35,10 +35,12 @@ returnで返す時は一つのタグでなければならない
 
 ## コンポーネントについて
 **原則クラスと関数の二つのコンポーネントが存在する**
+関数とクラスそれぞれのコンポーネントの書き方は異なる
 
 ### クラスコンポーネント
 ```class App extends Companent { ~処理 }```
-この時に必ずimportの部分でCompanentを記述
+この時に必ずimportの部分でCompanentを記述  
+`class ~ extends Component`で作成できる
 
 ### 関数コンポーネント
 ``` const App = () => { ~処理 }```
@@ -69,6 +71,31 @@ prop-typesとは？　**プロパティに対する型チェックを行うパ�
 `}`  
 これで型チェックができるようになり。渡した時に他の方だった場合、**warningが発生する**  
 `age: PropTypes.number.isRequired`これを記述すると必ずageを記述する必要がある  
+
+## stateについて
+stateとは？ **コンポーネント内の状態のこと**  
+`this.state`でアクセスすることができる  
+**constructorメソッド**で状態を初期化する　＝＞　counstructorの引数にはpropsを設定できる  
+`    constructor(props) {`  
+`        super(props)`  
+`        this.state = { count: 0 }`  
+これでこの場合countの初期化が完了する
+
+描画の部分  
+`        return (<div>count: {this.state.count }</div>)`  
+と記述すれば使える  
+
+### 状態を変更する
+`setState`を使用する  
+例：`        this.setState({count: this.state.count + 1})`  
+と記述すると現在の状態に+1されるカウントの関数ができるようにステートが設定される  
+**setSateを設定すると性質として自動でrenderされる**
+
+
+###  propsとの違い  
+ステートはコンポーネントの内部のみで使用される  
+propsは変更不可能な値であるがステートは**変更可能な値**  
+
 
 ## その他の概念や対応について
 ###  Warning: Each child in list in should have a unique "key" props ~のエラーの対処法

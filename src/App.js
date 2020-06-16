@@ -1,38 +1,35 @@
 // JSXの時は必ずreactを書く
-import React from "react";
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
 
-const App = () => {
-    // 配列で囲うことによって複数管理できるようになる
-    const profiles = [
-        { name: "Taro", age: 10 },
-        { name: "Hanako", age: 40 },
-        { name: "Souta", age: 34 }
-    ]
-    return (
-        <div>
-            {
-                // mapメソッドを使って配列を順番に取り出す
-                // ruby => profiles.map do |profile|
-                profiles.map((profile, index) => {
-                    return <User name = {profile.name} age = {profile.age} key={index} />
-                })
-            }
-        </div>
-    )
+// counterコンポーネントを呼ぶ定数
+const App = () => (<Counter></Counter>)
+
+class Counter extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = { count: 0 }
+    }
+
+    handlePlusButton = () => {
+        // 現在のカウントに1を足す
+        this.setState({count: this.state.count + 1})
+    }
+
+    handleDeleteButton = () => {
+        this.setState({count: this.state.count - 1})
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <div>count: {this.state.count }</div>
+                クリックされた時定義されたハンドルクラスボタン関数が作動する
+                <button onClick={this.handlePlusButton}>+1</button>
+                <button onClick={this.handleDeleteButton}>-1</button>
+            </React.Fragment>
+        )
+    }
 }
-
-const User = (props) => {
-    return <div>Hi, I am {props.name}. Age is {props.age} </div>
-}
-
-// ユーザーに対するproptypes
-User.propTypes = {
-    // これでstring型でのチェックができるようになる
-    name: PropTypes.string,
-    // これを記述するとこの場合は必ずageが必要になる
-    age: PropTypes.number.isRequired
-}
-
 
 export  default App;
