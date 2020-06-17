@@ -1,4 +1,4 @@
-https://anotherworks.slack.com/archives/GTHMG3WJK# reactアプリケーションの作成
+# reactアプリケーションの作成
 
 ## 一つのファイルのみを前の状態に戻す
 
