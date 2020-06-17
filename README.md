@@ -18,6 +18,14 @@ https://anotherworks.slack.com/archives/GTHMG3WJK# reactアプリケーション
 
 ```yarn add redux react-redux```
 
+## axiosの追加
+`yarn add axios`  
+外部のサーバーに対してhttpリクエストを送るためのライブラリ
+
+## redux-thunkの追加
+`yarn add redux-thunk`  
+reduxのactionCreatorの非同期処理のライブラリ
+
 ## ファイルの移動
 
 ` git mv src/App.js src/components/`
@@ -174,3 +182,6 @@ expoerで結びつける部分: `export default connect(mapStateToProps, mapDisp
 ## dispatchについて
 **発行という意味**
 > 作成(create)-初期化(init)-発行(dispatch)プロセスの最後のステップ
+
+### `componentDidMount()` => **コンポーネントがマウントされた時呼ばれるメソッド**
+
