@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { readEvents } from "../actions";
+import { Link } from "react-router-dom";
 
 class EventsIndex extends Component {
     // コンポーネントがマウントされた時呼ばれるメソッド
@@ -25,20 +26,25 @@ class EventsIndex extends Component {
     render() {
         //ヘッダー部分の作成
         return (
-            <table>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Body</th>
-                </tr>
-                </thead>
+            <React.Fragment>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Body</th>
+                    </tr>
+                    </thead>
 
-                <tbody>
-                {/*レンダーする関数*/}
-                {this.renderEvents()}
-                </tbody>
-            </table>
+                    <tbody>
+                    {/*レンダーする関数*/}
+                    {this.renderEvents()}
+                    </tbody>
+                </table>
+                {/*このような感じでリンクを設定する*/}
+
+                <Link to='events/new'>New Event</Link>
+            </React.Fragment>
         )
     }
 }

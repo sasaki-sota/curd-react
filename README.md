@@ -31,6 +31,20 @@ reduxのactionCreatorの非同期処理のライブラリ
 また、reduxのインポートの部分で`applyMiddleware`を追加する必要がある  
 ストアの部分に組み込まれるように`const store = createStore(reducer, applyMiddleware(thunk))`とする  
 
+## react-router-domの追加
+`yarn add react-router-dom`  
+新規作成画面の画面遷移となるリンク機能を有するパッケージ  
+`import { Link } from "react-router-dom";`  
+src/index.js: `import { BrowserRouter, Route, Switch } from 'react-router-dom';`  
+src/indexファイル内のReactDOM.render内でrouteの記述ができるようになる  
+`<Route exact path="/" component={EventsIndex} />`: indexの場合の例  
+
+
+## redux-formの追加
+`yarn add redux-form`  
+新規作成画面のreduxのフォーム画面  
+
+
 ## ファイルの移動
 
 ` git mv src/App.js src/components/`
@@ -209,7 +223,7 @@ expoerで結びつける部分: `export default connect(mapStateToProps, mapDisp
 `import _ from 'lodash';`をインポートする必要がある  
 `            console.log(_.mapKeys(action.response.data, 'id'))`  
 IDとして抽出したものをキーとして再配置する、それを一つのオブジェクトとして書き換える  
-** 1: {object~}**となる  
+**1: {object~}**となる  
 繰り返しの場合も使用することが多い  
 
 ##### mapKeysメソッドについて
