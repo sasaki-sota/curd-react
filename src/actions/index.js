@@ -1,14 +1,5 @@
-export const INCREMENT = 'INCREMENT'
-// reducerでも使用するために汎用的にする
-export const DECREMENT = 'DECREMENT'
-// これがアクションクリエーター
-export const increment = () => ({
-    // INCREMENTのアクション
-    type: INCREMENT
-})
+export const READ_EVENTS = 'READ_EVENTS'
 
-// コンポーネント側でも使うのでexportする
-export const decrement = () => ({
-    // DECREMENTのアクション
-    type: DECREMENT
+export const readEvents = () => ({
+    type: READ_EVENTS
 })
