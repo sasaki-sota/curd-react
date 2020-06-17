@@ -20,11 +20,16 @@ https://anotherworks.slack.com/archives/GTHMG3WJK# reactアプリケーション
 
 ## axiosの追加
 `yarn add axios`  
-外部のサーバーに対してhttpリクエストを送るためのライブラリ
+外部のサーバーに対してhttpリクエストを送るためのライブラリ  
+使用する時は`import axios from 'axios'`が必要
 
 ## redux-thunkの追加
 `yarn add redux-thunk`  
-reduxのactionCreatorの非同期処理のライブラリ
+reduxのactionCreatorの非同期処理のライブラリ  
+**アクションの代わりに関数を返すことができるようになる**  
+使用する時は`import thunk from "redux-thunk";`が必要  
+また、reduxのインポートの部分で`applyMiddleware`を追加する必要がある  
+ストアの部分に組み込まれるように`const store = createStore(reducer, applyMiddleware(thunk))`とする  
 
 ## ファイルの移動
 
@@ -185,3 +190,15 @@ expoerで結びつける部分: `export default connect(mapStateToProps, mapDisp
 
 ### `componentDidMount()` => **コンポーネントがマウントされた時呼ばれるメソッド**
 
+## async awaitについて
+例:  
+`const readEvents = () => async dispatch => {`  
+`const response = await axios.get(`${ROOT_URL}/events${QUERYSTRING}`)`  
+このように記述することで  
+**レスポンスを含めたアクションをディスパッチでレデューサに渡すようにする**
+
+#### axiosでのURLの設定について  
+`const ROOT_URL = 'https://hoge.com/api/v1'`  
+`const QUERYSTRING = '?token=token123'`  
+`axios.get(`${ROOT_URL}/events${QUERYSTRING}`)`  
+のように設定することでgetメソッドを走らせることができるようになる
