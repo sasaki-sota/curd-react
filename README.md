@@ -202,3 +202,15 @@ expoerで結びつける部分: `export default connect(mapStateToProps, mapDisp
 `const QUERYSTRING = '?token=token123'`  
 `axios.get(`${ROOT_URL}/events${QUERYSTRING}`)`  
 のように設定することでgetメソッドを走らせることができるようになる
+
+
+#### loadshについて
+**配列の操作に使用するパッケージ**  
+`import _ from 'lodash';`をインポートする必要がある  
+`            console.log(_.mapKeys(action.response.data, 'id'))`  
+IDとして抽出したものをキーとして再配置する、それを一つのオブジェクトとして書き換える  
+** 1: {object~}**となる  
+繰り返しの場合も使用することが多い  
+
+##### mapKeysメソッドについて
+
