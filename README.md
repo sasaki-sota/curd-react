@@ -193,6 +193,7 @@ storeとは？ **全てのコンポーネントでreducerを使用できるよ�
 ## redux Connect関数について
 conectとは？ **ステートやアクションとコンポーネントと関連づけを行って、viewのイベントで状態を遷移させて、遷移後の状態を描画する**  
 `import { connect } from 'react-redux'`をインポートする  
+reduxを使用する時はimportする必要がある  
 expoerで結びつける部分: `export default connect(mapStateToProps, mapDispatchToProps)(App)`  
 ####  mapStateToProps = stateの情報からこのコンポーネントに必要な情報を呼び出して、コンポーネントないのpropsとしてマッピングする性質のあるもの  
 `const mapStateToProps = state => {{ value: state.count.value }}`と記述  
@@ -226,4 +227,3 @@ IDとして抽出したものをキーとして再配置する、それを一つ
 繰り返しの場合も使用することが多い  
 
 ##### mapKeysメソッドについて
-
