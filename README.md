@@ -227,3 +227,27 @@ IDとして抽出したものをキーとして再配置する、それを一つ
 繰り返しの場合も使用することが多い  
 
 ##### mapKeysメソッドについて
+
+
+
+## redux-formついて
+URL: **https://redux-form.com/8.3.0/docs/gettingstarted.md/**  
+storeにreducerを含める必要がある  
+次にFormコンポーネントを実装する(step2)  
+events_new: `import { Field, reduxForm} from "redux-form";`を記述  
+
+### fieldコンポーネントの記述の例
+`<Field label="Title" name="title" type="text" component={this.renderField} />`  
+などと書く。renderFieldは別途で定義  
+`    renderField(field) {`  
+`const { input, label, type, meta: {touched, error} } = field`  
+`return (<div></div>)`  
+`}`  
+このように記述して引数でinputなどを察知する  
+export defaultの部分で  
+`reduxForm( {validate, form: 'eventNewForm' })(EventsNew)`  
+と記述することでEventsNewを渡す  
+
+##### disable属性について
+> ボタン・入力フォーム・選択リストにdisabled属性を付与すると一切の操作ができなくなります  
+
