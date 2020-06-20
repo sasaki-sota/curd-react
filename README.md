@@ -264,3 +264,14 @@ export defaultの部分で
 **一度したボタンが押せなくなる**  
 `<input type="submit" value="Submit" disabled={pristine || submitting} />`  
 と記述することでうまく完成する  
+
+
+## redux-devtoolsについて
+`yarn add redux-devtools-extension`でダウンロードできる  
+src/index.jsに`import { composeWithDevTools} from "redux-devtools-extension";`をインポートする  
+開発環境のみデバックすることが可能に  
+`const enhancer = process.env.NODE_ENV === 'development' ?`  
+`composeWithDevTools(applyMiddleware(thunk)) : applyMiddleware(thunk)`  
+と記述する  
+
+
