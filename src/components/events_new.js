@@ -1,18 +1,38 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Field, reduxForm} from "redux-form";
-// import { postEvent } from "../actions";
+import { postEvent } from "../actions";
 import { Link } from "react-router-dom";
+import handleSubmit from "redux-form/lib/handleSubmit";
 
 class EventsNew extends Component {
+    constructor(props) {
+        super(props)
+        this.onSubmit = this.onSubmit.bind(this)
+    }
     renderField(field) {
         const { input, label, type, meta: {touched, error} } = field
-        return (<div></div>)
-    }
-    render() {
-        //ヘッダー部分の作成
         return (
-            <form>
+            <div>
+                {/*入力したものがそのまま渡ってくる*/}
+                <input {...input} placeholder={label} type={type} />
+                {/*からでエラーの場合*/}
+                {touched && error && <span>{error}</span>}
+            </div>
+        )
+    }
+
+    // 非同期処理
+    async onSubmit(values) {
+        await this.props.postEvent(values)
+        this.props.history.push('/')
+    }
+
+    render() {
+        const { handleSubmit } = this.props
+        return (
+            // サブミットが押された場合の処理
+            <form onSubmit={handleSubmit(this.onSubmit)}>
                 <div>
                     {/*fieldコンポーネント*/}
                     <Field label="Title" name="title" type="text" component={this.renderField} />
@@ -32,11 +52,15 @@ class EventsNew extends Component {
 const validate = values => {
     const errors = {}
 
+    if (!values.title) errors.title = "タイトルを入力してください"
+    if (!values.body) errors.body = "本文を入力してください"
+
     return errors
 }
-// const mapDispatchToProps = ({ postEvent })
+// アクションで実装する
+const mapDispatchToProps = ({ postEvent })
 
 // 使用していない時はnullを使用する
-export default connect(null, null)(
+export default connect(null, mapDispatchToProps)(
     reduxForm( {validate, form: 'eventNewForm' })(EventsNew)
 )

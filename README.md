@@ -251,3 +251,5 @@ export defaultの部分で
 ##### disable属性について
 > ボタン・入力フォーム・選択リストにdisabled属性を付与すると一切の操作ができなくなります  
 
+#### `this.onSubmit.bind(this)`について
+
