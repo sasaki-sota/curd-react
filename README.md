@@ -210,7 +210,8 @@ expoerで結びつける部分: `export default connect(mapStateToProps, mapDisp
 `const readEvents = () => async dispatch => {`  
 `const response = await axios.get(`${ROOT_URL}/events${QUERYSTRING}`)`  
 このように記述することで  
-**レスポンスを含めたアクションをディスパッチでレデューサに渡すようにする**
+**レスポンスを含めたアクションをディスパッチでレデューサに渡すようにする**  
+非同期処理を用いる際にとてもよく使用される
 
 #### axiosでのURLの設定について  
 `const ROOT_URL = 'https://hoge.com/api/v1'`  
@@ -253,3 +254,13 @@ export defaultの部分で
 
 #### `this.onSubmit.bind(this)`について
 
+
+##### pristine属性について
+**何も入力されていないことを明示的に表す状態の属性**  
+`<input type="submit" value="Submit" disabled={pristine} />`  
+と記述するとボタンを押せなくなる  
+
+##### submitting属性について
+**一度したボタンが押せなくなる**  
+`<input type="submit" value="Submit" disabled={pristine || submitting} />`  
+と記述することでうまく完成する  

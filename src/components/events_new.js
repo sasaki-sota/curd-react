@@ -29,7 +29,8 @@ class EventsNew extends Component {
     }
 
     render() {
-        const { handleSubmit } = this.props
+        // pristineとは何も入力されていない状態の属性
+        const { handleSubmit, pristine, submitting } = this.props
         return (
             // サブミットが押された場合の処理
             <form onSubmit={handleSubmit(this.onSubmit)}>
@@ -40,7 +41,7 @@ class EventsNew extends Component {
                 </div>
 
                 <div>
-                    <input type="submit" value="Submit" disabled={false} />
+                    <input type="submit" value="Submit" disabled={pristine || submitting} />
                     <Link to="/">Cancel</Link>
                 </div>
             </form>
