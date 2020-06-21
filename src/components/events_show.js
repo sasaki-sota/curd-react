@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Field, reduxForm} from "redux-form";
-import { postEvent } from "../actions";
 import { Link } from "react-router-dom";
 
-class EventsNew extends Component {
+// イベントの削除と取得と更新
+import { getEvent, deleteEvent, putEvent } from "../actions";
+
+class EventsShow extends Component {
     constructor(props) {
         super(props)
         this.onSubmit = this.onSubmit.bind(this)
@@ -23,7 +25,7 @@ class EventsNew extends Component {
 
     // 非同期処理
     async onSubmit(values) {
-        await this.props.postEvent(values)
+        // await this.props.postEvent(values)
         this.props.history.push('/')
     }
 
@@ -58,9 +60,9 @@ const validate = values => {
     return errors
 }
 // アクションで実装する
-const mapDispatchToProps = ({ postEvent })
+// const mapDispatchToProps = ({ postEvent })
 
 // 使用していない時はnullを使用する
-export default connect(null, mapDispatchToProps)(
-    reduxForm( {validate, form: 'eventNewForm' })(EventsNew)
+export default connect(null, null)(
+    reduxForm( {validate, form: 'eventShowForm' })(EventsShow)
 )
