@@ -10,6 +10,7 @@ class EventsShow extends Component {
     constructor(props) {
         super(props)
         this.onSubmit = this.onSubmit.bind(this)
+        this.onDeleteClick = this.onDeleteClick.bind(this)
     }
     renderField(field) {
         const { input, label, type, meta: {touched, error} } = field
@@ -29,6 +30,14 @@ class EventsShow extends Component {
         this.props.history.push('/')
     }
 
+    //削除処理
+    async onDeleteClick() {
+        const { id } = this.props.match.params
+        await this.props.deleteEvent(id)
+        //redirect先
+        this.props.history.push('/')
+    }
+
     render() {
         // pristineとは何も入力されていない状態の属性
         const { handleSubmit, pristine, submitting } = this.props
@@ -44,6 +53,8 @@ class EventsShow extends Component {
                 <div>
                     <input type="submit" value="Submit" disabled={pristine || submitting} />
                     <Link to="/">Cancel</Link>
+                    {/*onDeleteClickを実装*/}
+                    <Link to="/" onClick={this.onDeleteClick} >Delete</Link>
                 </div>
             </form>
         )
@@ -60,9 +71,9 @@ const validate = values => {
     return errors
 }
 // アクションで実装する
-// const mapDispatchToProps = ({ postEvent })
+const mapDispatchToProps = ({ deleteEvent })
 
 // 使用していない時はnullを使用する
-export default connect(null, null)(
+export default connect(null, mapDispatchToProps)(
     reduxForm( {validate, form: 'eventShowForm' })(EventsShow)
 )

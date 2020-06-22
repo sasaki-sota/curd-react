@@ -275,4 +275,10 @@ src/index.jsに`import { composeWithDevTools} from "redux-devtools-extension";`�
 `composeWithDevTools(applyMiddleware(thunk)) : applyMiddleware(thunk)`  
 と記述する  
 
+#### idの探し方について
+`const { id } = this.props.match.params`  
+と記述することでrubyでのparams[:id]を検知できるようになる  
+
+#### スプレット演算子について
+`return { ...events }`  
 
