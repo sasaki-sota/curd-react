@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export const READ_EVENTS = 'READ_EVENTS'
+export const READ_EVENT = 'READ_EVENT'
 // reducerに対して渡す
 export const CREATE_EVENT = 'CREATE_EVENT'
 export const DELETE_EVENT = 'DELETE_EVENT'
@@ -26,4 +27,10 @@ export const deleteEvent = id => async dispatch => {
     //IDを判別のするのでevents/:idとなる
     await axios.delete(`${ROOT_URL}/events/${id}${QUERYSTRING}`)
     dispatch({ type: DELETE_EVENT, id })
+}
+
+// イベントの取得
+export const getEvent = id => async dispatch => {
+    const response = await axios.get(`${ROOT_URL}/events/${id}${QUERYSTRING}`)
+    dispatch({ type: READ_EVENT, response})
 }

@@ -282,3 +282,10 @@ src/index.jsに`import { composeWithDevTools} from "redux-devtools-extension";`�
 #### スプレット演算子について
 `return { ...events }`  
 
+
+##### 初期状態の値を表示する場合
+**initialValues**を使用する  
+`return { initialValues: event, event }`と記述する  
+さらにreduxFormの標準である**enableReinitialize**を使用すると初期値を変更できる  
+`enableReinitialize: true`  
+

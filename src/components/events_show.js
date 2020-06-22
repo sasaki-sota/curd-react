@@ -12,6 +12,12 @@ class EventsShow extends Component {
         this.onSubmit = this.onSubmit.bind(this)
         this.onDeleteClick = this.onDeleteClick.bind(this)
     }
+
+    componentDidMount() {
+        const { id } = this.props.match.params
+        if (id) this.props.getEvent(id)
+    }
+
     renderField(field) {
         const { input, label, type, meta: {touched, error} } = field
         return (
@@ -71,9 +77,12 @@ const validate = values => {
     return errors
 }
 // アクションで実装する
-const mapDispatchToProps = ({ deleteEvent })
-
+const mapDispatchToProps = ({ deleteEvent, getEvent })
+const mapStateToProps = (state, ownProps) => {
+    const event = state.events[ownProps.match.params.id]
+    return { initialValues: event, event }
+}
 // 使用していない時はnullを使用する
-export default connect(null, mapDispatchToProps)(
-    reduxForm( {validate, form: 'eventShowForm' })(EventsShow)
+export default connect(mapStateToProps, mapDispatchToProps)(
+    reduxForm( {validate, form: 'eventShowForm', enableReinitialize: true })(EventsShow)
 )
