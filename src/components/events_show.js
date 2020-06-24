@@ -4,6 +4,7 @@ import { Field, reduxForm} from "redux-form";
 import { Link } from "react-router-dom";
 
 // イベントの削除と取得と更新
+
 import { getEvent, deleteEvent, putEvent } from "../actions";
 
 class EventsShow extends Component {
@@ -32,7 +33,7 @@ class EventsShow extends Component {
 
     // 非同期処理
     async onSubmit(values) {
-        // await this.props.postEvent(values)
+        await this.props.putEvent(values)
         this.props.history.push('/')
     }
 
@@ -46,7 +47,7 @@ class EventsShow extends Component {
 
     render() {
         // pristineとは何も入力されていない状態の属性
-        const { handleSubmit, pristine, submitting } = this.props
+        const { handleSubmit, pristine, submitting, invalid } = this.props
         return (
             // サブミットが押された場合の処理
             <form onSubmit={handleSubmit(this.onSubmit)}>
@@ -57,7 +58,7 @@ class EventsShow extends Component {
                 </div>
 
                 <div>
-                    <input type="submit" value="Submit" disabled={pristine || submitting} />
+                    <input type="submit" value="Submit" disabled={pristine || submitting || invalid } />
                     <Link to="/">Cancel</Link>
                     {/*onDeleteClickを実装*/}
                     <Link to="/" onClick={this.onDeleteClick} >Delete</Link>
@@ -77,7 +78,7 @@ const validate = values => {
     return errors
 }
 // アクションで実装する
-const mapDispatchToProps = ({ deleteEvent, getEvent })
+const mapDispatchToProps = ({ deleteEvent, getEvent, putEvent })
 const mapStateToProps = (state, ownProps) => {
     const event = state.events[ownProps.match.params.id]
     return { initialValues: event, event }

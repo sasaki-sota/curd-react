@@ -289,3 +289,4 @@ src/index.jsに`import { composeWithDevTools} from "redux-devtools-extension";`�
 さらにreduxFormの標準である**enableReinitialize**を使用すると初期値を変更できる  
 `enableReinitialize: true`  
 
+#　全ての部分でもっと調べる必要がある（調べ終わったら消してよし）
