@@ -193,6 +193,7 @@ storeとは？ **全てのコンポーネントでreducerを使用できるよ�
 ## redux Connect関数について
 conectとは？ **ステートやアクションとコンポーネントと関連づけを行って、viewのイベントで状態を遷移させて、遷移後の状態を描画する**  
 `import { connect } from 'react-redux'`をインポートする  
+reduxを使用する時はimportする必要がある  
 expoerで結びつける部分: `export default connect(mapStateToProps, mapDispatchToProps)(App)`  
 ####  mapStateToProps = stateの情報からこのコンポーネントに必要な情報を呼び出して、コンポーネントないのpropsとしてマッピングする性質のあるもの  
 `const mapStateToProps = state => {{ value: state.count.value }}`と記述  
@@ -209,7 +210,8 @@ expoerで結びつける部分: `export default connect(mapStateToProps, mapDisp
 `const readEvents = () => async dispatch => {`  
 `const response = await axios.get(`${ROOT_URL}/events${QUERYSTRING}`)`  
 このように記述することで  
-**レスポンスを含めたアクションをディスパッチでレデューサに渡すようにする**
+**レスポンスを含めたアクションをディスパッチでレデューサに渡すようにする**  
+非同期処理を用いる際にとてもよく使用される
 
 #### axiosでのURLの設定について  
 `const ROOT_URL = 'https://hoge.com/api/v1'`  
@@ -226,4 +228,64 @@ IDとして抽出したものをキーとして再配置する、それを一つ
 繰り返しの場合も使用することが多い  
 
 ##### mapKeysメソッドについて
+
+
+
+## redux-formついて
+URL: **https://redux-form.com/8.3.0/docs/gettingstarted.md/**  
+storeにreducerを含める必要がある  
+次にFormコンポーネントを実装する(step2)  
+events_new: `import { Field, reduxForm} from "redux-form";`を記述  
+
+### fieldコンポーネントの記述の例
+`<Field label="Title" name="title" type="text" component={this.renderField} />`  
+などと書く。renderFieldは別途で定義  
+`    renderField(field) {`  
+`const { input, label, type, meta: {touched, error} } = field`  
+`return (<div></div>)`  
+`}`  
+このように記述して引数でinputなどを察知する  
+export defaultの部分で  
+`reduxForm( {validate, form: 'eventNewForm' })(EventsNew)`  
+と記述することでEventsNewを渡す  
+
+##### disable属性について
+> ボタン・入力フォーム・選択リストにdisabled属性を付与すると一切の操作ができなくなります  
+
+#### `this.onSubmit.bind(this)`について
+
+
+##### pristine属性について
+**何も入力されていないことを明示的に表す状態の属性**  
+`<input type="submit" value="Submit" disabled={pristine} />`  
+と記述するとボタンを押せなくなる  
+
+##### submitting属性について
+**一度したボタンが押せなくなる**  
+`<input type="submit" value="Submit" disabled={pristine || submitting} />`  
+と記述することでうまく完成する  
+
+
+## redux-devtoolsについて
+**https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd**ここの部分で拡張する  
+`yarn add redux-devtools-extension`でダウンロードできる  
+src/index.jsに`import { composeWithDevTools} from "redux-devtools-extension";`をインポートする  
+開発環境のみデバックすることが可能に  
+`const enhancer = process.env.NODE_ENV === 'development' ?`  
+`composeWithDevTools(applyMiddleware(thunk)) : applyMiddleware(thunk)`  
+と記述する  
+
+#### idの探し方について
+`const { id } = this.props.match.params`  
+と記述することでrubyでのparams[:id]を検知できるようになる  
+
+#### スプレット演算子について
+`return { ...events }`  
+
+
+##### 初期状態の値を表示する場合
+**initialValues**を使用する  
+`return { initialValues: event, event }`と記述する  
+さらにreduxFormの標準である**enableReinitialize**を使用すると初期値を変更できる  
+`enableReinitialize: true`  
 
